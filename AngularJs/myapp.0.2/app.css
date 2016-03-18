@@ -1,0 +1,233 @@
+/* app css stylesheet */
+
+html.inner-html {
+    position: relative;
+    height: 100%;
+    overflow: hidden;
+}
+
+body {
+    font-size: 14px;
+    line-height: 1.42857143;
+    margin:0;
+}
+
+html.inner-html body {
+    height: 100%;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+}
+
+html body {
+    padding: 0;
+    overflow-x: hidden;
+}
+
+body {
+  font-weight: 400;
+  font-size:14px;
+  color: rgba(255, 255, 255, 0.6);
+  -webkit-font-smoothing: antialiased;
+  position: relative;
+  background: -webkit-linear-gradient(0deg, #1b1b1b 50%, #25497E 100%); /* Chrome 10+, Saf5.1+ */
+  background:    -moz-linear-gradient(0deg, #1b1b1b 50%, #25497E 100%); /* FF3.6+ */
+  background:     -ms-linear-gradient(0deg, #1b1b1b 50%, #25497E 100%); /* IE10 */
+  background:      -o-linear-gradient(0deg, #1b1b1b 50%, #25497E 100%); /* Opera 11.10+ */
+  background:         linear-gradient(0deg, #1b1b1b 50%, #25497E 100%); /* W3C */
+}
+body:before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  background-image: url("assets/images/bg_repeat.png");
+  background-repeat: repeat;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+#wrap-all {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
+#wrap-all #main{height:100%;}
+
+#wrap-all #main .centerpanel {
+    height:100%;
+    margin-right: 0;
+    margin-top: 50px;
+    position: relative;
+}
+
+#wrap-all #main .footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom:10px;
+    width: 100%;
+    z-index: 100;
+    color:#fff;
+    padding:5px;
+}
+
+
+/* ==========================================================================
+   Navigation
+   ========================================================================== */
+.navbar {
+  background-color: transparent;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  z-index: 100;
+}
+.navbar-collapse {
+  padding:0;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  background-color: transparent;
+  color: #fff;
+}
+.navbar-default .navbar-nav > li > a {
+  color: rgba(255, 255, 255, 0.5);
+  -webkit-transition: all 0.2s linear;
+  -moz-transition: all 0.2s linear;
+  -o-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+}
+.navbar-default .navbar-nav > li > a:hover {
+  color: #fff;
+}
+
+/* ==========================================================================
+   视图页面切换动画
+   ========================================================================== */
+#main-views { width:auto; }
+ 
+/* basic styling for entering and leaving */
+/* left and right added to ensure full width */
+#main-views.ng-enter,
+#main-views.ng-leave { position:absolute; left:30px; right:30px;
+    transition:0.5s all ease; -moz-transition:0.5s all ease; -webkit-transition:0.5s all ease; 
+}
+     
+/* enter animation */
+#main-views.ng-enter{ 
+    -webkit-animation:slideInRight 0.5s both ease;
+    -moz-animation:slideInRight 0.5s both ease;
+    animation:slideInRight 0.5s both ease; 
+}
+ 
+/* leave animation */
+#main-views.ng-leave{ 
+    -webkit-animation:slideOutLeft 0.5s both ease;
+    -moz-animation:slideOutLeft 0.5s both ease;
+    animation:slideOutLeft 0.5s both ease;   
+}
+ 
+/* ANIMATIONS
+============================================================================= */
+/* slide out to the left */
+@keyframes slideOutLeft {
+    to{ transform: translateX(-200%); }
+}
+@-moz-keyframes slideOutLeft {    
+    to{ -moz-transform: translateX(-200%); }
+}
+@-webkit-keyframes slideOutLeft {
+    to{ -webkit-transform: translateX(-200%); }
+}
+ 
+/* slide in from the right */
+@keyframes slideInRight {
+    from{ transform:translateX(200%); }
+    to{ transform: translateX(0); }
+}
+@-moz-keyframes slideInRight {
+    from{ -moz-transform:translateX(200%); }
+    to{ -moz-transform: translateX(0); }
+}
+@-webkit-keyframes slideInRight {
+    from{ -webkit-transform:translateX(200%); }
+    to{ -webkit-transform: translateX(0); }
+}
+
+
+/* ==========================================================================
+   内容
+   ========================================================================== */
+
+.online {padding-top:50px;}
+.online hr{width:500px}
+.online .online_main{margin:0 auto; color:#fff;text-align: center;}
+.online .online_title{font-size:24px;line-height: 24px;padding-top:30px;}
+.online .online_title .icon-time{top:3px;}
+.online .clock{margin-left:8px;}
+.online .text{font-size:18px;line-height:24px;margin-left:30px;}
+.online .online_dynamic{font-size:42px; letter-spacing:8px;}
+
+.entry{position: relative; height: 100%;}
+.entry .entry-echart{width:690px;height:300px;}
+.entry .entry-echart-panel{width:1000px;height:450px;text-align: center;margin: 0 auto;padding-top:50px;}
+.entry.entry-center{padding-top:30px;}
+
+/* ==========================================================================
+   Loading 
+   ========================================================================== */
+.spinner {
+  width: 60px;
+  height: 60px;
+  position: relative;
+  margin: 0 auto;
+}
+ 
+.double-bounce1, .double-bounce2 {
+  width: 80%;
+  height: 80%;
+  border-radius: 50%;
+  background-color: #fff;
+  opacity: 0.6;
+  position: absolute;
+  top: 0;
+  left: 0;
+   
+  -webkit-animation: bounce 2.0s infinite ease-in-out;
+  animation: bounce 2.0s infinite ease-in-out;
+}
+ 
+.double-bounce2 {
+  -webkit-animation-delay: -1.0s;
+  animation-delay: -1.0s;
+}
+ 
+@-webkit-keyframes bounce {
+  0%, 100% { -webkit-transform: scale(0.0) }
+  50% { -webkit-transform: scale(1.0) }
+}
+ 
+@keyframes bounce {
+  0%, 100% {
+    transform: scale(0.0);
+    -webkit-transform: scale(0.0);
+  } 50% {
+    transform: scale(1.0);
+    -webkit-transform: scale(1.0);
+  }
+}

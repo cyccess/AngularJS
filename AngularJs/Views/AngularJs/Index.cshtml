@@ -1,0 +1,171 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>AngularJs</title>
+    <script src="~/Scripts/angular.js"></script>
+    <script>
+        var app = angular.module('app', []);
+
+        app.controller('exampleController', ["$http", "$scope", "example", "validate", function ($http, $scope, example, validateService) {
+            $scope.content = example.name;
+
+            $scope.validateData = validateService;
+
+            $scope.getUser = function() {
+                alert("Hello " + example.name + " " + example.value);
+            }
+
+            $http.get("/api/services/GetLanguage", {}).success(function(data) {
+                $scope.arr = data;
+            });
+
+            $scope.click = function() {
+
+                $http({ url: "/api/Services/", params: { id: 1 } })
+                    .success(function(data, status, headers, config) {
+                        $scope.user = data;
+                    })
+                    .error(function(data, status, headers, config) {
+                        console.error("error:" + status);
+                    });
+            };
+
+            $scope.people = {
+                'Ari': 'orange',
+                'Q': 'purple',
+                'Sean': 'green'
+            }
+
+            $scope.click1 = function() {
+                $scope.content = "深秋了，你穿秋裤了么？";
+            }
+        }]);
+
+        //app.service("example", function () {
+        //    this.user = { name: "Taimen", value: "TM" };
+        //});
+
+        app.factory('example', function () {
+            var data = { name: 'Taimen', value: 'TM' };
+            return data;
+        });
+
+        app.factory('validate', ["example", function (exampleService) {
+            return function () {
+                if (exampleService.name === 'Taimen') {
+                    alert('验证通过');
+                }
+            };
+        }]);
+
+        app.directive('focus', function() {
+            return {
+                link: function(scope, element, attrs) {
+                    element[0].focus();
+                }
+            };
+        });
+
+        app.directive('hello', function() {
+            return {
+                restrict: "AEC",
+                replace: true,
+                //template: "<div>显示固定数据，类似自定义标签</div>",
+                //templateUrl: "/AngularJs/View1",
+                templateUrl: "view1",
+                transclude: true,
+                scope: {
+                    cont: '=speak'
+                }
+            }
+        });
+
+        app.filter('odditems', function () {
+            return function (inputArray) {
+                var array = [];
+                for (var i = 0; i < inputArray.length; i++) {
+                    if (i % 2 !== 0) {
+                        array.push(inputArray[i]);
+                    }
+                }
+                return array;
+            }
+        });
+
+
+        app.controller('MyController', function($scope) {
+            $scope.person = { name: "Ari Lerner" };
+            var updateClock = function() {
+                $scope.clock = new Date();
+            };
+            var timer = setInterval(function() {
+                $scope.$apply(updateClock);
+            }, 1000);
+            updateClock();
+        });
+    </script>
+</head>
+<!--AngularJS的指令都是以ng开头，或者也可以使用data-ng开头。-->
+<body ng-app="app" ng-controller="exampleController" data-ng-init="user.Message='cyccess'">
+<div>
+    <input type="text" ng-model="user.Message"/>
+    <h1 ng-click="click()">
+        Hello {{user.Message | uppercase}}
+    </h1>
+
+    <p ng-bind="user.Message"></p>
+
+    <input type="text" focus ng-model="search"/>
+
+    <ul>
+        <li ng-repeat="v in arr|filter:search">
+            {{v}}
+        </li>
+    </ul>
+
+    <hello speak="content"></hello>
+
+
+    <span hello speak="content">美女</span>
+
+    <span hello="content">美女</span>
+
+    <button type="button" ng-click="click1()">忘穿秋裤</button>
+
+    <div ng-controller="MyController">
+        <p>{{clock | date: "yyyy-MM-dd HH:mm:ss"}}</p>
+    </div>
+
+    <button ng-init="shouldShow = true" ng-click="shouldShow = !shouldShow">Flip the shouldShow variable</button>
+    <div ng-show="shouldShow">
+        <h3>Showing {{ shouldShow }}</h3>
+    </div>
+    <div ng-hide="shouldShow">
+        <h3>Hiding {{ shouldShow }}</h3>
+    </div>
+
+
+    <ul>
+        <li ng-repeat="(name, color) in people">
+            {{ name }}'s favorite color is {{ color }}
+        </li>
+    </ul>
+
+
+    <button type="button" ng-click="getUser()">获取服务值</button>
+
+    <button ng-click="validateData()">验证数据</button>
+</div>
+</body>
+</html>
+
+<script id="view1" type="text/ng-template">
+    <div>Hello Cc! <b ng-transclude></b>,{{cont}}</div>
+</script>

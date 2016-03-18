@@ -1,0 +1,58 @@
+﻿@model dynamic
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>title</title>
+    <script src="~/Scripts/angular.js"></script>
+    <script src="~/Scripts/angular-route.js"></script>
+    <script>
+        var app = angular.module("MyApp", ["ngRoute"]);
+
+        app.config([
+            "$routeProvider", function($routeProvider) {
+                $routeProvider.when("/", {
+                    templateUrl: "list.html",
+                    controller: "ListController"
+                }).when("/detail/:id", {
+                    controller: 'DetailController',
+                    templateUrl: 'detail.html'
+                }).otherwise({ redirectTo: "/" });
+            }
+        ]);
+
+        app.controller('ListController', function ($scope) {
+            
+        });
+
+        app.controller('DetailController', function ($scope, $routeParams) {
+            $scope.text = "Detail";
+        });
+    </script>
+</head>
+<body>
+<div ng-app="MyApp">
+
+    <div ng-view></div>
+
+    <script type="text/ng-template" id="list.html">
+        <ul>
+            <li><a href="#/detail/1">ngRoute1</a></li>
+            <li><a href="#/detail/2">ngRoute2</a></li>
+            <li><a href="#/detail/3">ngRoute3</a></li>
+        </ul>
+    </script>
+
+    <script type="text/ng-template" id="detail.html">
+        <div>
+         {{text}}
+        </div>
+    </script>
+</div>
+</body>
+</html>

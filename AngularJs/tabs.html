@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+    <title></title>
+    <meta charset="utf-8"/>
+    <style>
+        body{font-size:14px;}
+        ul{margin-top:0;}
+        li{margin:0;padding:0;list-style: none;}
+        a{ text-decoration: none;}
+
+        .nav {padding-left: 0;margin-bottom: 0;list-style: none;}
+        .nav:before, 
+        .nav:after{display: table;content: " ";clear: both;}
+        .nav-tabs {border-bottom: 2px solid #ff0000;}
+        .nav-tabs > li {float: left;margin-bottom: -1px;}
+        .nav > li {position: relative;display: block;}
+        .nav > li > a {position: relative;display: block;padding: 10px 15px;color:#666;font-weight:700;}
+        .nav-tabs > li.active > a, .nav-tabs > li.active > a:hover {
+            color: #ff0000;
+            background-color: inherit;
+            border-bottom: 4px solid #ff0000;
+            cursor: pointer;
+            background: url(assets/slider.png) no-repeat center 30px ;
+        }
+        .tab-content>.tab-pane {display: none;}
+        .tab-content>.active {display: block;}
+
+    </style>
+    <script src="assets/jquery-1.10.2.min.js"></script>
+    <script>
+
+        $(function() {
+            $(".nav-tabs li a").hover(function() {
+                var nav = $(this).parent().parent();
+                nav.find("li").removeClass("active");
+                $(this).parent().addClass("active");
+                $(".tab-content .tab-pane").removeClass("active");
+                var tag = $(this).data("tag");
+                $("#" + tag).addClass("active");
+            }, function() {
+
+            });
+        });
+    </script>
+</head>
+<body>
+    <ul class="nav nav-tabs ">
+        <li class="active"><a data-tag="rule" href="javascript:void(0);">活动规则</a></li>
+        <li><a data-tag="question" href="javascript:void(0);">常见问题</a></li>
+        <li><a data-tag="test" href="javascript:;">加一个</a></li>
+    </ul>
+    <div class="tab-content">
+        <div class="tab-pane active" id="rule">
+            <p>1. 活动期间，用户注册后立即获得5元红包，可登陆网站在“资金管理—优惠券”中查询。首次投资成功后，红包立即返至账户余额中，可提现至银行卡。</p>
+            <p>2. 老用户邀请新用户注册时，新用户需输入老用户（需为贷贷兴隆注册用户）的手机号码，老用户即可获得免金券奖励，“免金券”可在提现时冲抵相应提现手续费。</p>
+            <p>3. 活动期间，注册为贷贷兴隆用户后，并成功推荐朋友注册，可同时获得相应免金券奖励。</p>
+            <p>4. 用户首次投资砸金蛋获得的现金奖励，将直接返至您的账户余额中。</p>
+            <p>5. 本次活动最终解释权为贷贷兴隆所有。</p>
+        </div>
+        <div class="tab-pane " id="question">
+            <p>1、微信注册也可以参与活动吗？</p>
+            <p>答：可以的，通过微信注册同样可以参与活动。</p>
+            <p>2、如何关注微信？</p>
+            <p>答：贷贷兴隆官方微信号：daidaixinglong、或扫网页上方二维码即可关注。</p>
+            <p>3、奖励的“红包”在哪里查看</p>
+            <p>答：登陆网站后，点击“账户中心—优惠券”，即可查询红包奖励。</p>
+            <p>4、如何使用“免金券”？</p>
+            <p>答：在提现时点击“免金券充抵手续费”，输入使用金额并确认。</p>
+            <p>5、如何使用“红包”？</p>
+            <p>答：投资时根据提示点击“使用红包”，即可充当现金进行投资。</p>
+        </div>
+        <div class="tab-pane " id="test">
+            <p>
+                tab tab  tab tab  tab tab  tab tab  tab tab  tab tab  tab tab  tab tab
+            </p>
+        </div>
+    </div>
+
+</body>
+</html>

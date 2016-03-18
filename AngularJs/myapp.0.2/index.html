@@ -1,0 +1,33 @@
+﻿<!doctype html>
+<html class="inner-html">
+<head>
+    <meta charset="utf-8">
+    <title>My AngularJS App</title>
+    <link href="bower_components/bootstrap/css/bootstrap.css" rel="stylesheet" />
+    <link href="app.css" rel="stylesheet" />
+</head>
+<body ng-cloak>
+<div id="wrap-all">
+    <div id="main">
+        <nav class="navbar navbar-default" role="navigation">
+            <div class="container-fluid">
+                <ul class="nav navbar-nav">
+                    <li ui-sref-active="active"><a ui-sref="online">Online</a></li>
+                    <li ui-sref-active="active"><a ui-sref="register">Register</a></li>
+                    <li ui-sref-active="active"><a ui-sref="invest">invest</a></li>
+                    <li ui-sref-active="active"><a ui-sref="total">total</a></li>
+                    <li ui-sref-active="active"><a ui-sref="subject">subject</a></li>
+                    <li ui-sref-active="active"><a ui-sref="main">Center</a></li>
+                </ul>
+            </div><!-- /.container-fluid -->
+        </nav>
+        <div class="centerpanel">
+            <ui-view id="main-views"></ui-view>
+        </div>
+        <div class="footer">监控系统: v<span app-version></span></div>
+        <dynamic-view></dynamic-view>
+    </div>
+</div>
+<script data-main="require-config" src="bower_components/require.js"></script>
+</body>
+</html>

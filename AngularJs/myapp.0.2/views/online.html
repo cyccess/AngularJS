@@ -1,0 +1,20 @@
+﻿<div class="entry online">
+    <div class="online_main">
+        <div class="online_title">
+            <i class="glyphicon glyphicon-time icon-time"></i>
+            <span class="clock">{{clock | date: "HH : mm : ss"}}</span>
+            <span class="text">贷贷兴隆同时在线人数</span>
+        </div>
+        <hr/>
+        <div class="loading" ng-show="!online">
+            <div class="spinner">
+                <div class="double-bounce1"></div>
+                <div class="double-bounce2"></div>
+            </div>
+        </div>
+        <div class="online_dynamic">
+            {{online | number}}
+        </div>
+        <div>历史最高在线人数：20,321</div>
+    </div>
+</div>
